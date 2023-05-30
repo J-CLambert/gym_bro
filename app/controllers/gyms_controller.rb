@@ -15,15 +15,31 @@ class GymsController < ApplicationController
 
   def create
     @gym = Gym.new(gym_params)
-    @gym.save
-    redirect_to :root
+    @gym.user = current_user
+
+    respond_to do |format|
+      if @gym.save
+        format.html { redirect_to gym_path(@gym), notice: "Review was successfully created." }
+        format.json { render :show, status: :created, location: @gym }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @gym.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit; end
 
   def update
-    @gym.update(gym_params)
-    redirect_to :root
+    respond_to do |format|
+      if @gym.update(gym_params)
+        format.html { redirect_to gym_url(@gym), notice: "gym was successfully updated." }
+        format.json { render :show, status: :ok, location: @gym }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @gym.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
@@ -38,6 +54,6 @@ class GymsController < ApplicationController
   end
 
   def gym_params
-    params.require(:gym).permit(:title, :address, :description, :priceph, :user_id)
+    params.require(:gym).permit(:title, :address, :description, :priceph)
   end
 end
