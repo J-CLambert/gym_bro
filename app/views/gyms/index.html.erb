@@ -1,6 +1,6 @@
 <h1>Gyms</h1>
 <% @gyms.each do |gym| %>
-  <li><%= link_to gym.name, gym_path(gym)%></li>
+  <li><%= link_to gym.title, gym_path(gym)%></li>
 <%end%>
 
 <%= link_to "create", new_gym_path%>
