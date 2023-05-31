@@ -26,7 +26,11 @@
   </div>
 </div>
 
+<h1><%= current_user.owner%></h1>
+
 <div>
-  <%= link_to "Edit this gym", edit_gym_path(@gym) %> |
+<%if current_user.owner == true%>
+  <%= link_to "Edit this gym", edit_gym_path(@gym) %>
   <%= button_to "Destroy this gym", @gym, method: :delete %>
+<%end%>
 </div>
