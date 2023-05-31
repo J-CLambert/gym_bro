@@ -21,9 +21,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <%if !current_user%>
+        <%= button_to "user mode", new_user_session_path, class: "btn btn-primary" %>
+      <%elsif current_user.owner%>
+        <%= button_to "user mode", toggle_owner_view_path, method: :put, class: "btn btn-primary" %>
+      <%else%>
+        <%= button_to "owner mode", toggle_owner_view_path, method: :put, class: "btn btn-outline-primary" %>
+      <%end%>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">LOGIN</a>
+          <%= button_to "log in", new_user_session_path, class: "btn btn-primary %>
+          <%# <a class="nav-link active" aria-current="page" href="#">LOGIN</a> %>
         </li>
         <li class="nav-item dropdown">
         </li>
