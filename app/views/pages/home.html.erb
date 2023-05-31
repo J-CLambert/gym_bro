@@ -18,6 +18,11 @@
         <li class="nav-item">
         </li>
       </ul>
+      <%if current_user.owner%>
+        <%= button_to "user mode", toggle_owner_view_path, method: :put, class: "btn btn-primary" %>
+      <%else%>
+        <%= button_to "owner mode", toggle_owner_view_path, method: :put, class: "btn btn-outline-primary" %>
+      <%end%>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-dark" type="submit">Search</button>
