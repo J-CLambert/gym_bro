@@ -48,6 +48,11 @@ class BookingsController < ApplicationController
     redirect_to :root, status: :see_other
   end
 
+  def requested
+    # @bookings = []
+    @bookings = current_user.bookings
+  end
+
   private
 
   def set_booking
