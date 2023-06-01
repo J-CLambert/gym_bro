@@ -17,13 +17,8 @@ gem "puma", "~> 5.0"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
-<<<<<<< HEAD
-gem 'bootstrap', '~> 5.0.0'
-=======
 
 gem 'bootstrap', '~> 5.0.2'
-
->>>>>>> 938d2764c441971735864eb2351311018d1be04f
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
