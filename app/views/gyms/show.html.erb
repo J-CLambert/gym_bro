@@ -10,17 +10,15 @@
       <div class="card-product">
         <%= image_tag("fit2.png", class: "img-fluid") %>
         <div class="card-product-infos">
-          <h2>Gym-Bro</h2>
           <p><%= "Smart fitness center" %></p>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="card-product-infos">
-        <h2>Gym-Bro where fitness meets excellence!</h2>
-        <p><strong>Price per hour: </strong><%= "98chf" %></p>
-        <p><strong>Address: Gym-Bro, LeWagon-Switzerland </strong><%= "Lausanne-Renens" %></p>
-        <p><strong>Contact us for any inquiries or feedback: </strong><%= "0041-77805-579" %></p>
+        <h2><%= @gym.title %></h2>
+        <strong>Address: <%= @gym.address %> </strong>
+        <p><strong> Price: <%=@gym.priceph %> </strong><%= %></p>
       </div>
     </div>
   </div>
