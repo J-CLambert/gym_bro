@@ -1,10 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @gym %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('fit.jpg')">
+  <%= "Gym-Bro" %>
+</div>
 
 <%if current_user.owner == false && @gym.user != current_user%>
   <%= link_to "Send Request", new_gym_booking_path(@gym)%>
 <%end%>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card-product">
+        <%= image_tag("fit2.png", class: "img-fluid") %>
+        <div class="card-product-infos">
+          <p><%= "Smart fitness center" %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-product-infos">
+        <h2><%= @gym.title %></h2>
+        <strong>Address: <%= @gym.address %> </strong>
+        <p><strong> Price: <%=@gym.priceph %> </strong><%= %></p>
+      </div>
+    </div>
+  </div>
 <div>
 <%if current_user.owner == true && @gym.user == current_user%>
   <%= link_to "Edit this gym", edit_gym_path(@gym) %>
@@ -23,3 +43,12 @@
   <%end%>
 <%end%>
 </div>
+
+<% if current_user.owner %>
+  <h1>Welcome, owner!</h1>
+
+  <div>
+    <%= link_to "Edit this gym", edit_gym_path(@gym) %>
+    <%= button_to "Destroy this gym", @gym, method: :delete %>
+  </div>
+<% end %>
