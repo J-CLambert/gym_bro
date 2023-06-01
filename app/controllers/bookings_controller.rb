@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_gym, only: %i[new create]
+  before_action :set_booking, only: %i[show edit update destroy change_status_confirmed]
+  before_action :set_gym, only: %i[new create change_status_confirmed]
   # skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
@@ -9,12 +9,18 @@ class BookingsController < ApplicationController
 
   def show; end
 
+  def change_status_confirmed
+    @booking.update!(status: 1)
+    redirect_back(fallback_location: gym_path(@gym))
+  end
+
   def new
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.price = @gym.priceph
     @booking.user = current_user
     @booking.gym = @gym
 
