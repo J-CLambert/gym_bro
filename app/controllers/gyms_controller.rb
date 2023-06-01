@@ -1,13 +1,13 @@
 class GymsController < ApplicationController
-  before_action :set_gym, only: [:show, :edit, :update, :destroy]
+  before_action :set_gym, only: %i[show edit update destroy bookings]
   # skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
     @gyms = Gym.all
   end
 
-
-  def show; end
+  def show
+  end
 
   def new
     @gym = Gym.new
