@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_31_095105) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_093639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.integer "price"
     t.date "start_at"
-    t.time "duration"
     t.bigint "user_id", null: false
     t.bigint "gym_id", null: false
     t.date "traning_started_at"
     t.date "traning_ended_at"
-    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.text "message"
+    t.integer "duration"
     t.index ["gym_id"], name: "index_bookings_on_gym_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -38,6 +39,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_095105) do
     t.bigint "user_id", null: false
     t.string "title"
     t.index ["user_id"], name: "index_gyms_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "subject"
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

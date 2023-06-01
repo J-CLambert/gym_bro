@@ -1,11 +1,11 @@
-<%= simple_form_for(current_user) do |f| %>
+<%= simple_form_for([@gym, @booking]) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :address %>
-    <%= f.input :description %>
-    <%= f.input :priceph, label: "Price per hour" %>
+    <%= f.input :start_at, label: "Training date and time", as: :datetime %>
+    <%= f.input :duration, collection: 1..5, label: "Hours of training"%>
+    <%= f.input :message%>
   </div>
 
   <div class="form-actions">
