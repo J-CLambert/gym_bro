@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update destroy change_status_confirmed]
-  before_action :set_gym, only: %i[new create change_status_confirmed]
+  before_action :set_booking, only: %i[show edit update destroy confirm]
+  before_action :set_gym, only: %i[new create]
   # skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
@@ -9,9 +9,9 @@ class BookingsController < ApplicationController
 
   def show; end
 
-  def change_status_confirmed
-    @booking.update!(status: 1)
-    redirect_back(fallback_location: gym_path(@gym))
+  def confirm
+    @booking.confirmed!
+    redirect_back(fallback_location: bookings_path)
   end
 
   def new
@@ -51,7 +51,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to :root, status: :see_other
+    redirect_to bookings_path, notice: 'Booking was successfully deleted.'
   end
 
   private
