@@ -22,15 +22,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <%if !current_user%>
-        <%= button_to "user mode", new_user_session_path, class: "btn btn-primary" %>
+        <%= button_to "User mode", new_user_session_path, class: "btn btn-primary" %>
       <%elsif current_user.owner%>
-        <%= button_to "user mode", toggle_owner_view_path, method: :put, class: "btn btn-primary" %>
+        <%= button_to "User mode", toggle_owner_view_path, method: :put, class: "btn btn-dark m-1 btn-no-underline" %>
       <%else%>
-        <%= button_to "owner mode", toggle_owner_view_path, method: :put, class: "btn btn-outline-primary" %>
+        <%= button_to "Owner mode", toggle_owner_view_path, method: :put, class: "btn btn-dark m-1 btn-no-underline" %>
       <%end%>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= button_to "log in", new_user_session_path, class: "btn btn-primary" %>
+          <%= button_to "log in", new_user_session_path, class: "btn btn-dark m-1 btn-no-underline" %>
         </li>
         <li class="nav-item dropdown">
         </li>
@@ -39,7 +39,7 @@
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-dark" type="submit">Search</button>
+        <%= link_to "Search", gyms_path, class:"btn btn-dark  btn-no-underline" %>
       </form>
     </div>
   </div>
