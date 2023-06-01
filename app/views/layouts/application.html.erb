@@ -13,24 +13,28 @@
   <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-<a class="navbar-brand" href="#">
-<i class="fa-solid fa-dumbbell fa-lg" style="color: #000000;"></i>
-      GYM-BRO
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <i class="fa-solid fa-dumbbell fa-lg" style="color: #000000;"></i>
+      <%= link_to "GYM-BRO", root_path, class: "btn btn-transparent ms-2" %>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <%if !current_user%>
-        <%= button_to "user mode", new_user_session_path, class: "btn btn-primary" %>
+        <%= button_to "User mode", new_user_session_path, class: "btn btn-dark m-1 btn-no-underline" %>
       <%elsif current_user.owner%>
-        <%= button_to "user mode", toggle_owner_view_path, method: :put, class: "btn btn-primary" %>
+        <%= button_to "User mode", toggle_owner_view_path, method: :put, class: "btn btn-dark m-1 btn-no-underline" %>
       <%else%>
-        <%= button_to "owner mode", toggle_owner_view_path, method: :put, class: "btn btn-outline-primary" %>
+        <%= button_to "Owner mode", toggle_owner_view_path, method: :put, class: "btn btn-dark m-1 btn-no-underline" %>
       <%end%>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= button_to "log in", new_user_session_path, class: "btn btn-primary" %>
+        <%if user_signed_in?%>
+        <%= button_to "Log out", destroy_user_session_path, :method => :delete, class: "btn btn-dark m-1 btn-no-underline" %>
+        <%else%>
+          <%= button_to "log in", new_user_session_path, class: "btn btn-dark m-1 btn-no-underline" %>
+        <%end%>
         </li>
         <li class="nav-item dropdown">
         </li>
@@ -39,7 +43,7 @@
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-dark" type="submit">Search</button>
+        <%= link_to "Search", gyms_path, class:"btn btn-dark  btn-no-underline" %>
       </form>
     </div>
   </div>

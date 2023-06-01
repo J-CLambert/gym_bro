@@ -1,9 +1,10 @@
-<div class="container">
-      <%= link_to "Create", new_gym_path, class: "btn btn-primary rounded-pill text-white" %>
-</div>
-
+<%if current_user.owner%>
+  <div class="container">
+    <%= link_to "Create", new_gym_path, class: "btn btn-primary rounded-pill text-white" %>
+  </div>
+<%end%>
 <div class="col-12">
-<h1 class="CuTitle_title__BbV07 h1 text-center mb-5">GYMS</h1>
+  <h1 class="CuTitle_title__BbV07 h1 text-center mb-5">GYMS</h1>
 </div>
 
 <div class="container">
@@ -13,6 +14,7 @@
         <div class="card mb-3">
           <%= link_to gym_path(gym) do %>
             <%= image_tag "fit2.png", class: "card-img-top", alt: "description_de_l'image" %>
+            <%= gym.title%>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><strong><%= gym.title %></strong></h5>
