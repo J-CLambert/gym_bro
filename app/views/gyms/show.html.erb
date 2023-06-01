@@ -1,36 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), image.png">
-  <%= Gym-Bro %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('image.png')">
+  <%= "Gym-Bro" %>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-6">
       <div class="card-product">
-        <%= image_tag "image.png" %>
+        <%= image_tag("image.png") %>
         <div class="card-product-infos">
           <h2>Gym-Bro</h2>
-          <p><%= Gym-Bro, smart fitness center %></p>
+          <p><%= "Gym-Bro, smart fitness center" %></p>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="card-product-infos">
         <h2>Welcome to Gym-Bro where fitness meets excellence! Discover top-rated gyms, connect with like-minded fitness enthusiasts, and book your sessions hassle-free.</h2>
-        <p><strong>Price per hour: </strong><%= 98chf %></p>
-        <p><strong>Address: Gym-Bro, LeWagon, Lausane-Switzerland </strong><%= Lausanne-Renens %></p>
-        <p><strong>Contact us for any inquiries or feedback: </strong><%= 0041-77805-579 %></p>
+        <p><strong>Price per hour: </strong><%= "98chf" %></p>
+        <p><strong>Address: Gym-Bro, LeWagon-Switzerland </strong><%= "Lausanne-Renens" %></p>
+        <p><strong>Contact us for any inquiries or feedback: </strong><%= "0041-77805-579" %></p>
       </div>
     </div>
   </div>
 </div>
 
-<h1><%= current_user.owner%></h1>
+<h1><%= current_user.owner %></h1>
 
 <div>
-<%if current_user.owner == true%>
-  <%= link_to "Edit this gym", edit_gym_path(@gym) %>
-  <%= button_to "Destroy this gym", @gym, method: :delete %>
-<%end%>
+  <% if current_user.owner == true %>
+    <%= link_to "Edit this gym", edit_gym_path(@gym) %>
+    <%= button_to "Destroy this gym", @gym, method: :delete %>
+  <% end %>
 </div>
