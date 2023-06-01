@@ -1,108 +1,27 @@
-<% @gyms.each do |gym| %>
-  <li><%= link_to gym.title, gym_path(gym)%></li>
+<%if current_user.owner%>
+  <div class="container">
+    <%= link_to "Create", new_gym_path, class: "btn btn-primary rounded-pill text-white" %>
+  </div>
 <%end%>
-<%= link_to "create", new_gym_path%>
-
-    <div class="col-12">
-<h1 class="CuTitle_title__BbV07 h1 text-center mb-5">GYMS</h1>
+<div class="col-12">
+  <h1 class="CuTitle_title__BbV07 h1 text-center mb-5">GYMS</h1>
 </div>
 
-<div class="container d-flex">
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-</div>
-<div class="container d-flex">
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-</div>
-<div class="container d-flex">
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="card m-3" style="width: 18rem;">
-<%= link_to "https://www.lien-de-destination.com" do %>
-      <%= image_tag "fit2", class: "card-img-top", alt: "description_de_l'image" %>
-    <% end %>    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
+<div class="container">
+  <div class="row">
+    <% @gyms.each do |gym| %>
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <%= link_to gym_path(gym) do %>
+            <%= image_tag "fit2.png", class: "card-img-top", alt: "description_de_l'image" %>
+            <%= gym.title%>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= gym.title %></strong></h5>
+            <p class="card-text"><%= gym.description%></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

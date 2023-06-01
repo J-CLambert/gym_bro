@@ -4,6 +4,9 @@
   <%= "Gym-Bro" %>
 </div>
 
+<%if current_user.owner == false && @gym.user != current_user%>
+  <%= link_to "Send Request", new_gym_booking_path(@gym)%>
+<%end%>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -23,6 +26,14 @@
       </div>
     </div>
   </div>
+<div>
+<%if current_user.owner == true && @gym.user == current_user%>
+  <%= link_to "Edit this gym", edit_gym_path(@gym) %>
+  <%= button_to "Destroy this gym", @gym, method: :delete %>
+  <% @gym.bookings.each do |booking|%>
+    <%= booking.id %>
+  <%end%>
+<%end%>
 </div>
 
 <% if current_user.owner %>
