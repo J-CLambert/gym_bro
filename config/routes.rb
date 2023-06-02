@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resources :bookings do
     put :confirm, on: :member
   end
+
+  resources :bookings, only: [] do
+    get :requested, on: :collection  
+  end
+  
+
   #   patch "users", to: "pages#change_to_owner", as: "change_to_owner"
   put "toggle_owner_view", to: "pages#toggle_owner_view"
   root to: "pages#home"

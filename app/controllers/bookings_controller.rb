@@ -54,6 +54,11 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, notice: 'Booking was successfully deleted.'
   end
 
+  def requested
+    # @bookings = []
+    @bookings = current_user.bookings
+  end
+
   private
 
   def set_booking
