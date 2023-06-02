@@ -3,3 +3,13 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+
+.zoom-effect {
+  transition: transform 0.3s ease;
+  /* Ajoute une transition de 0.3 secondes pour l'effet de zoom */
+}
+
+.zoom-effect:hover {
+  transform: scale(1.1);
+  /* Applique un effet de zoom en augmentant l'échelle à 1.1 */
+}

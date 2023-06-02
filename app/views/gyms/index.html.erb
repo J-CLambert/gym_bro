@@ -14,7 +14,7 @@
     <div class="row">
       <% @gyms.each do |gym| %>
         <div class="col-md-4">
-          <div class="card mb-3">
+          <div class="card mb-3 zoom-effect">
             <%= link_to gym_path(gym) do %>
               <%= image_tag "fit2.png", class: "card-img-top", alt: "description_de_l'image" %>
             <% end %>
@@ -36,7 +36,7 @@
       <% @gyms.each do |gym| %>
         <% if current_user && gym.user == current_user %> <!-- Ajoutez cette condition -->
           <div class="col-md-4">
-            <div class="card mb-3">
+            <div class="card mb-3 zoom-effect">
               <%= link_to gym_path(gym) do %>
                 <%= image_tag "fit2.png", class: "card-img-top", alt: "description_de_l'image" %>
               <% end %>
