@@ -1,40 +1,19 @@
-<%if current_user.owner%>
-  <div class="container">
-    <%= link_to "Create", new_gym_path, class: "btn btn-primary rounded-pill text-white" %>
-  </div>
-<%end%>
-
-
-
-<% if !current_user.owner %>
-<div class="col-12">
-  <h1 class="CuTitle_title__BbV07 h1 text-center mb-5">GYMS LIST</h1>
-</div>
-  <div class="container">
-    <div class="row">
-      <% @gyms.each do |gym| %>
-        <div class="col-md-4">
-          <div class="card mb-3 zoom-effect">
-            <%= link_to gym_path(gym) do %>
-              <%= image_tag "fit2.png", class: "card-img-top", alt: "description_de_l'image" %>
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><strong><%= gym.title %></strong></h5>
-              <p class="card-text"><%= gym.description %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
+<div>
+  <%if current_user.owner%>
+    <div class="container">
+      <%= link_to "Create", new_gym_path, class: "btn btn-primary rounded-pill text-white" %>
     </div>
+  <%end%>
+
+
+
+  <% if !current_user.owner %>
+  <div class="col-12">
+    <h1 class="CuTitle_title__BbV07 h1 text-center mb-5">GYMS LIST</h1>
   </div>
-<% else %>
-<div class="col-12">
-  <h1 class="CuTitle_title__BbV07 h1 text-center mb-5">MY GYMS</h1>
-</div>
-  <div class="container">
-    <div class="row">
-      <% @gyms.each do |gym| %>
-        <% if current_user && gym.user == current_user %> <!-- Ajoutez cette condition -->
+    <div class="container">
+      <div class="row d-flex">
+        <% @gyms.each do |gym| %>
           <div class="col-md-4">
             <div class="card mb-3 zoom-effect">
               <%= link_to gym_path(gym) do %>
@@ -47,7 +26,30 @@
             </div>
           </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
+  <% else %>
+  <div class="col-12">
+    <h1 class="CuTitle_title__BbV07 h1 text-center mb-5">MY GYMS</h1>
   </div>
-<% end %>
+    <div class="container">
+      <div class="row d-flex">
+        <% @gyms.each do |gym| %>
+          <% if current_user.owner && gym.user == current_user %> <!-- Ajoutez cette condition -->
+            <div class="col-md-4">
+              <div class="card mb-3 zoom-effect">
+                <%= link_to gym_path(gym) do %>
+                  <%= image_tag "fit2.png", class: "card-img-top", alt: "description_de_l'image" %>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title"><strong><%= gym.title %></strong></h5>
+                  <p class="card-text"><%= gym.description %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

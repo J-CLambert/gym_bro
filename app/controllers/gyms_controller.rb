@@ -20,7 +20,7 @@ class GymsController < ApplicationController
 
     respond_to do |format|
       if @gym.save
-        format.html { redirect_to gym_path(@gym), notice: "Review was successfully created." }
+        format.html { redirect_to gym_path(@gym), notice: "Gym was successfully created." }
         format.json { render :show, status: :created, location: @gym }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,7 +34,7 @@ class GymsController < ApplicationController
   def update
     respond_to do |format|
       if @gym.update(gym_params)
-        format.html { redirect_to gym_url(@gym), notice: "gym was successfully updated." }
+        format.html { redirect_to gym_url(@gym), notice: "Gym was successfully updated." }
         format.json { render :show, status: :ok, location: @gym }
       else
         format.html { render :edit, status: :unprocessable_entity }
