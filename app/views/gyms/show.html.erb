@@ -4,9 +4,6 @@
   <%= "Gym-Bro" %>
 </div>
 
-<%if current_user.owner == false && @gym.user != current_user%>
-  <%= link_to "Send Request", new_gym_booking_path(@gym)%>
-<%end%>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -30,3 +27,20 @@
   <%= link_to "Edit this gym", edit_gym_path(@gym) %>
   <%= button_to "Destroy this gym", @gym, method: :delete %>
 <%end%>
+
+<%if current_user.owner == false && @gym.user != current_user%>
+  <%= simple_form_for([@gym, @booking]) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :start_at, label: "Training date and time", as: :datetime %>
+      <%= f.input :duration, collection: 1..5, label: "Hours of training"%>
+      <%= f.input :message%>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+<% end %>

@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save
         format.html { redirect_to gyms_path, notice: "Booking was successfully created." }
-        format.json { render :show, status: :created, location: @booking }
+        format.json { render :show, status: :created, location: @gym }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @booking.errors, status: :unprocessable_entity }

@@ -35,10 +35,14 @@
         <%else%>
           <%= button_to "log in", new_user_session_path, class: "btn btn-dark m-1 btn-no-underline" %>
         <%end%>
+        
         <li>
         <%= link_to "Bookings", requested_bookings_path, class:"btn btn-dark  btn-no-underline text-right m-1" %>
         </li>
 
+        <li>
+        <%= link_to "My requests", bookings_path, class:"btn btn-dark  btn-no-underline text-right m-1" %>
+        </li>
         </li>
         <li class="nav-item dropdown">
         </li>
@@ -53,9 +57,10 @@
   </div>
 </nav>
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    <p class="alert mb-5"><%= alert %></p>
+    <div class = "content">
+      <%= yield %>
+    </div>
     <div class="footer">
   <div class="footer-links">
     <a href="#"><i class="fab fa-github"></i></a>
