@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-8">
-      <h1 class="text-center my-4">Bookings</h1>
+      <h1 class="text-center my-4">My Bookings</h1>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -11,6 +11,7 @@
             <th scope="col">Status</th>
             <th scope="col">Email</th>
             <th scope="col">Message</th>
+            <th scope="col">Final Price (fr)</th>
           </tr>
         </thead>
         <tbody>
@@ -18,8 +19,8 @@
           <% @bookings.each do |booking| %>
             <tr>
               <th scope="row"><%=i%></th>
-                <td><% booking.start_at %></td>
-                <td><% booking.duration %></td>
+                <td><%= booking.start_at %></td>
+                <td><%= booking.duration %></td>
               <td>
                 <%status = booking.status.gsub('_', ' ')%>
                 <%= status%>
@@ -28,7 +29,9 @@
               <td><%= booking.gym.user.email%></td>
 
               <td><%= booking.message%></td>
-
+              <% if booking.price && booking.duration && booking.status == 2%>
+              <td><%= booking.price * booking.duration%></td>
+              <%end%>
             </tr>
             <%i = i + 1%>
           <% end %>
