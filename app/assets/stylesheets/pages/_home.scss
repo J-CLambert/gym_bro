@@ -1,6 +1,19 @@
 .rounded-img {
   border-radius: 50%;
 }
+.container {
+  flex: 1 0 auto;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
 .footer {
   background: #F4F4F4;
   display: flex;
@@ -9,6 +22,7 @@
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+  flex-shrink: 0;
 }
 .footer-links {
   display: flex;
