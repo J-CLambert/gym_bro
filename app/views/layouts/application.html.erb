@@ -35,6 +35,10 @@
         <%else%>
           <%= button_to "log in", new_user_session_path, class: "btn btn-dark m-1 btn-no-underline" %>
         <%end%>
+        <li>
+        <%= link_to "Bookings", requested_bookings_path, class:"btn btn-dark  btn-no-underline text-right m-1" %>
+        </li>
+
         </li>
         <li class="nav-item dropdown">
         </li>

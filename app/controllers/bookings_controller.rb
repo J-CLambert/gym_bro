@@ -56,7 +56,10 @@ class BookingsController < ApplicationController
 
   def requested
     # @bookings = []
-    @bookings = current_user.bookings
+
+    bookings_all = current_user.bookings
+
+    @bookings = bookings_all
   end
 
   private
