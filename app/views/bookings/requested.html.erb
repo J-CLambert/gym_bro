@@ -5,12 +5,12 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Nnb</th>
-            <th scope="col">Message</th>
-            <th scope="col">Email</th>
-            <th scope="col">Status</th>
+            <th scope="col"></th>
             <th scope="col">Date</th>
-            <th scope="col">Durate</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Status</th>
+            <th scope="col">Email</th>
+            <th scope="col">Message</th>
           </tr>
         </thead>
         <tbody>
@@ -18,21 +18,17 @@
           <% @bookings.each do |booking| %>
             <tr>
               <th scope="row"><%=i%></th>
-              <td><%= booking.message%></td>
-              <td><%= booking.user.email%></td>
+                <td><% booking.start_at %></td>
+                <td><% booking.duration %></td>
               <td>
-                <% if booking.status == 0 %> 
-                  Payé
-                <% elsif booking.status == 1 %> 
-                <% else %>
-                  Non payé
-                <% end %>
-            <td>
-                <% booking.start_at %>
-            </td>
-             <td>
-                <% booking.duration %>
-            </td>
+                <%status = booking.status.gsub('_', ' ')%>
+                <%= status%>
+              </td>
+
+              <td><%= booking.gym.user.email%></td>
+
+              <td><%= booking.message%></td>
+
             </tr>
             <%i = i + 1%>
           <% end %>
