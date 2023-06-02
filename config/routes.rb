@@ -4,14 +4,14 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index, :new, :create] do
     end
   end
-
+  
+  resources :bookings, only: [] do
+    get :requested, on: :collection  
+  end
   resources :bookings do
     put :confirm, on: :member
   end
 
-  resources :bookings, only: [] do
-    get :requested, on: :collection  
-  end
   
 
   #   patch "users", to: "pages#change_to_owner", as: "change_to_owner"
