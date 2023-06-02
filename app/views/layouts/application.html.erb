@@ -13,8 +13,12 @@
   <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center">
-      <i class="fa-solid fa-dumbbell fa-lg" style="color: #000000;"></i>
+
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <%= link_to root_path do%>
+        <i class="fa-solid fa-dumbbell fa-lg" style="color: #000000;"></i>
+      <%end%>
+
       <%= link_to "GYM-BRO", root_path, class: "btn btn-transparent ms-2" %>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +39,7 @@
         <%else%>
           <%= button_to "log in", new_user_session_path, class: "btn btn-dark m-1 btn-no-underline" %>
         <%end%>
-        
+
         <li>
         <%= link_to "Bookings", requested_bookings_path, class:"btn btn-dark  btn-no-underline text-right m-1" %>
         </li>
