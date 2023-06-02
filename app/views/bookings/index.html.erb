@@ -37,10 +37,13 @@
                   </div>
                   <div class="row align-items-center mb-4">
                     <div class="col-4">
-                      <%= button_to "confirmed", confirm_booking_path(booking), method: :put %>
+                      <%= button_to "confirm", confirm_booking_path(booking), method: :put, class: "btn btn-primary", data: { controller: "disable-button", action: "click->disable-button#disable" }%>
                     </div>
                     <div class="col-4">
-                      <%= button_to "delete", booking_path(booking), method: :delete %>
+                      <%= button_to "delete", booking_path(booking), method: :delete, class: "btn btn-primary", data: { action: "click->disable-button#disable" }%>
+                    </div>
+                    <div class="col-4">
+                      <%= button_to "training ended", training_ended_booking_path(booking), method: :put, class: "btn btn-primary", data: { action: "click->disable-button#disable" }%>
                     </div>
                   </div>
                 <%end%>

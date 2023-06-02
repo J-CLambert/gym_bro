@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update destroy confirm]
+  before_action :set_booking, only: %i[show edit update destroy confirm training_ended]
   before_action :set_gym, only: %i[new create]
   # skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
@@ -11,7 +11,15 @@ class BookingsController < ApplicationController
 
   def confirm
     @booking.confirmed!
-    redirect_back(fallback_location: bookings_path)
+  end
+
+  def training_ended
+    @booking.training_ended!
+    if @booking.training_ended!
+      flash[:notice] = 'Booking status updated successfully'
+    else
+      flash[:alert] = 'There was an error updating the booking status'
+    end
   end
 
   def new
