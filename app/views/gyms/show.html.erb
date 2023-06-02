@@ -29,26 +29,4 @@
 <%if current_user.owner == true && @gym.user == current_user%>
   <%= link_to "Edit this gym", edit_gym_path(@gym) %>
   <%= button_to "Destroy this gym", @gym, method: :delete %>
-
-  <h2>My Gym Requests</h2>
-  <% @gym.bookings.each do |booking|%>
-    <p>Client name: <%= booking.user.name %></p>
-    <p>Client email: <%= booking.user.email%></p>
-    <p>Booking price: <%= booking.gym.priceph%> fr</p>
-    <p>Training date: <%= booking.start_at%></p>
-    <%status = booking.status.gsub('_', ' ')%>
-    <p>Training duration: <%= booking.duration%> hours</p>
-    <p>Status: <%= status%></p>
-    <%= button_to status, change_status_confirmed_gym_booking_path(@gym, booking), method: :put%>
-  <%end%>
 <%end%>
-</div>
-
-<% if current_user.owner %>
-  <h1>Welcome, owner!</h1>
-
-  <div>
-    <%= link_to "Edit this gym", edit_gym_path(@gym) %>
-    <%= button_to "Destroy this gym", @gym, method: :delete %>
-  </div>
-<% end %>

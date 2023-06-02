@@ -1,0 +1,17 @@
+<h1>My Requests</h1>
+<%current_user.gyms.each do |gym|%>
+  <h2>Gym: <%= gym.title%></h2>
+  <p>Gym address: <%= gym.address%></p>
+  <p>Price per hour: <%= gym.priceph%></p>
+  <p><% gym.bookings.each do |booking|%></p>
+    <p>Client name: <%= booking.user.name %></p>
+    <p>Client email: <%= booking.user.email%></p>
+    <p>Booking price: <%= booking.price%> fr</p>
+    <p>Training date: <%= booking.start_at%></p>
+    <%status = booking.status.gsub('_', ' ')%>
+    <p>Training duration: <%= booking.duration%> hours</p>
+    <p>Status: <%= status%></p>
+    <%= button_to status, confirm_booking_path(booking), method: :put %>
+    <%= button_to "delete", booking_path(booking), method: :delete %>
+  <%end%>
+<%end%>

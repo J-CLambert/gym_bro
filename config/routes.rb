@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :gyms do
     resources :bookings, only: [:index, :new, :create] do
-      member do
-        put :change_status_confirmed
-      end
     end
+  end
+
+  resources :bookings do
+    put :confirm, on: :member
   end
   #   patch "users", to: "pages#change_to_owner", as: "change_to_owner"
   put "toggle_owner_view", to: "pages#toggle_owner_view"
